@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Discount Learning Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="super-class">
+  <div class="page-header">
+    <span class="back-btn" onclick="goBack()"><i style="font-size:28px" class="fa">&#xf0a8;</i></span>
+    <div class="header-text">
+      <h1>Calculate discounts from price and percentage</h1>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <div class="scene">
+      <div class="scene-content">
+        <div class="reset-btn" onclick="resetGame()"><i style="font-size:22px" class="fa">&#xf021;</i></div>
+
+        <div class="shelf-area">
+          <div class="toys-row">
+            <div class="toy-item" id="toy-0"><span class="toy-emoji">⚽</span><span class="toy-name">Ball</span></div>
+            <div class="toy-item" id="toy-1"><span class="toy-emoji">🪆</span><span class="toy-name">Doll</span></div>
+            <div class="toy-item" id="toy-2"><span class="toy-emoji">🤖</span><span class="toy-name">Robot</span></div>
+            <div class="toy-item" id="toy-3"><span class="toy-emoji">🧸</span><span class="toy-name">Teddy</span></div>
+            <div class="toy-item" id="toy-4"><span class="toy-emoji">🚗</span><span class="toy-name">Car</span></div>
+          </div>
+        </div>
+
+        <div class="shelf-plank"></div>
+
+        <div class="price-card-area">
+          <div class="price-card pop" id="pcard">
+            <div class="plbl">Original price:</div>
+            <div class="pval" id="pval">₹200</div>
+            <div class="dbadge" id="dbadge">Discount: 25%</div>
+          </div>
+          <div class="q-label" id="qlabel"></div>
+        </div>
+
+        <div class="ruler-section">
+          <div class="live-row">
+            <div class="live-pill pill-pct">Discount: <b id="live-pct">25%</b></div>
+            <div class="live-pill pill-amt">Amount off: <b id="live-amt">₹50</b></div>
+          </div>
+
+          <div class="ruler-label-row"><span class="ruler-lbl">%</span><span class="ruler-hint">drag to explore</span></div>
+          <div class="ruler-box">
+            <div class="tick-row" id="pticks"></div>
+            <div class="track-outer" id="pct-track">
+              <div class="track-bg"></div>
+              <div class="track-fill" id="pct-fill"></div>
+              <div class="thumb" id="pct-thumb"></div>
+            </div>
+          </div>
+
+          <div class="ruler-label-row"><span class="ruler-lbl">₹</span><span class="ruler-hint">syncs with % slider</span></div>
+          <div class="ruler-box">
+            <div class="tick-row" id="rpticks"></div>
+            <div class="track-outer" id="price-track">
+              <div class="track-bg"></div>
+              <div class="track-fill" id="price-fill"></div>
+              <div class="thumb" id="price-thumb"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-row">
+          <span class="qlbl">Discount amount = ₹</span>
+          <div class="opts" id="opts"></div>
+          <div class="attempts-row">
+            <span class="att-label">Attempts:</span>
+            <div class="att-dot" id="att-0"></div>
+            <div class="att-dot" id="att-1"></div>
+            <div class="att-dot" id="att-2"></div>
+          </div>
+          <div class="fb" id="fb"></div>
+          <div class="hint" id="hint"></div>
+          <button class="nxtbtn" id="nxtbtn" style="display:none" onclick="nextQ()">Next toy →</button>
+        </div>
+
+        <div class="sbar">
+          <span class="stxt">Score: <b id="sc">0</b> / 5</span>
+          <div class="dots" id="dots"></div>
+          <span class="stxt">Q <b id="qn">1</b> / 5</span>
+        </div>
+
+        <div class="control-bar">
+          <div class="left-controls">
+            <button class="icon-btn"><i style="font-size:22px" class="fa">&#xf087;</i></button>
+            <button class="icon-btn"><i style="font-size:22px" class="fa">&#xf088;</i></button>
+          </div>
+          <div class="right-controls">
+            <button class="icon-btn" onclick="resetGame()"><i style="font-size:22px" class="fa">&#xf021;</i></button>
+            <button class="icon-btn" onclick="toggleSound()"><i style='font-size:22px' class='fa'>&#xf028;</i></button>
+            <button class="icon-btn" id="fsBtn" onclick="toggleFullscreen()"><i style='font-size:28px' class="material-icons">fullscreen</i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-panel">
+      <h2>Curriculum alignment</h2>
+      <div class="dropdown-row">
+        <div class="dropdown">
+          <div class="dropdown-selected" onclick="toggleDropdown('menu1')">
+            <span id="selected1">Singapore Syllabus 2013</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="dropdown-menu" id="menu1">
+            <div onclick="selectOption('selected1', this)">Singapore Syllabus 2013</div>
+            <div onclick="selectOption('selected1', this)">IB PYP Mathematics</div>
+            <div onclick="selectOption('selected1', this)">ICSE</div>
+            <div onclick="selectOption('selected1', this)">NCERT</div>
+          </div>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-selected" onclick="toggleDropdown('menu2')">
+            <span id="selected2">5th Standard</span>
+            <span class="arrow">▼</span>
+          </div>
+          <div class="dropdown-menu" id="menu2">
+            <div onclick="selectOption('selected2', this)">5th Standard</div>
+            <div onclick="selectOption('selected2', this)">6th Standard</div>
+            <div onclick="selectOption('selected2', this)">7th Standard</div>
+            <div onclick="selectOption('selected2', this)">8th Standard</div>
+          </div>
+        </div>
+      </div>
+      <ul class="topic-list"><li>1.NA - Number and Algebra</li></ul>
+      <div class="info-table">
+        <div class="row"><div class="label">Activity type</div><div class="value">Interactive Game</div></div>
+        <div class="row"><div class="label">Purpose</div><div class="value">Conceptual understanding</div></div>
+        <div class="row"><div class="label">Questions</div><div class="value">5</div></div>
+        <div class="row"><div class="label">Est. Effort</div><div class="value">5 minutes</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
