@@ -8,26 +8,26 @@ const QUESTIONS = [
   {
     toy: 1, name: 'Doll', orig: 500, disc: 20, type: 'amount',
     q: 'Doll costs ₹500 with 20% off. What is the discount amount?',
-    answer: 100, opts: [100, 50, 150, 80], hint: '₹500 × 20 ÷ 100 = ₹100'
+    answer: 100, opts: [50, 150, 100, 80], hint: '₹500 × 20 ÷ 100 = ₹100'
   },
 
   // LEVEL 2: Find Final Price
   {
     toy: 2, name: 'Robot', orig: 400, disc: 25, type: 'final',
     q: 'Robot costs ₹400 with 25% off. What is the final price?',
-    answer: 300, opts: [300, 350, 320, 280], hint: '₹400 − ₹100 = ₹300'
+    answer: 300, opts: [320, 350, 300, 280], hint: '₹400 − ₹100 = ₹300'
   },
   {
     toy: 3, name: 'Teddy', orig: 600, disc: 15, type: 'final',
     q: 'Teddy costs ₹600 with 15% off. What is the final price?',
-    answer: 510, opts: [510, 540, 480, 525], hint: '₹600 − ₹90 = ₹510'
+    answer: 510, opts: [525, 540, 480, 510], hint: '₹600 − ₹90 = ₹510'
   },
 
   // LEVEL 3: Find Original Price
   {
     toy: 4, name: 'Car', orig: 800, disc: 30, type: 'original',
     q: 'Car costs ₹560 after 30% off. What was the original price?',
-    answer: 800, opts: [800, 750, 850, 700], hint: '₹560 ÷ 0.70 = ₹800'
+    answer: 800, opts: [750, 800, 850, 700], hint: '₹560 ÷ 0.70 = ₹800'
   },
   {
     toy: 5, name: 'Game', orig: 1000, disc: 35, type: 'original',
@@ -40,7 +40,7 @@ const QUESTIONS = [
     toy: 6, name: 'Yoyo', orig: 300, disc: 20, type: 'compare',
     q: 'Yoyo A: ₹300 at 20% off. Yoyo B: ₹250 at 10% off. Which is cheaper?',
     answer: 225,
-    opts: [225, 240, 250, 180],
+    opts: [240, 225, 250, 180],
     optLabels: ['Yoyo B ₹225', 'Yoyo A ₹240', 'Same', '₹180'],
     hint: 'A: ₹240 | B: ₹225 → Yoyo B cheaper'
   }
