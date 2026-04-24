@@ -41,7 +41,7 @@ const QUESTIONS = [
     q: 'Yoyo A: ₹300 at 20% off. Yoyo B: ₹250 at 10% off. Which is cheaper?',
     answer: 225,
     opts: [240, 225, 250, 180],
-    optLabels: ['Yoyo B ₹225', 'Yoyo A ₹240', 'Same', '₹180'],
+    optLabels: ['Yoyo A ₹240', 'Yoyo B ₹225', 'Same', '₹180'],
     hint: 'A: ₹240 | B: ₹225 → Yoyo B cheaper'
   }
 ];
