@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Discount Learning Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>latest</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -51,27 +52,38 @@
             <div class="q-label pop" id="qlabel"></div>
           </div>
 
-          <div class="ruler-section">
-            <div class="ruler-label-row"><span class="ruler-lbl pct-lbl">%</span><span class="ruler-hint">Initially lock price and adjust discount</span></div>
-            <div class="ruler-box ruler-box-pct">
-              <div class="tick-row" id="pticks"></div>
-              <div class="track-outer" id="pct-track">
-                <div class="track-bg pct-track-bg"></div>
-                <div class="track-fill pct-track-fill" id="pct-fill"></div>
-                <div class="thumb pct-thumb-el" id="pct-thumb"></div>
-                <div class="target-marker" id="pct-marker"></div>
+          <div class="integrated-ruler-container" id="ruler-container">
+            <!-- Percentage Ruler (Top) - Stretches with the thumb -->
+            <div class="ruler-row pct-row" id="ruler-row-pct">
+              <div class="ruler-icon-cell">%</div>
+              <div class="ruler-track-cell">
+                <div class="track-outer" id="pct-track" style="width: 80%;">
+                  <div class="tick-row-static" id="pct-labels">
+                    <span>0%</span><span>10%</span><span>20%</span><span>30%</span><span>40%</span><span>50%</span><span>60%</span><span>70%</span><span>80%</span><span>90%</span><span>100%</span>
+                  </div>
+                  <div class="dynamic-ticks-container" id="pct-ticks"></div>
+                  <div class="track-fill pct-fill" id="pct-fill"></div>
+                  <!-- The Green Glowing Marker from the image -->
+                  <div class="thumb master-marker" id="master-marker">
+                    <div class="glow-dot"></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="ruler-label-row"><span class="ruler-lbl price-lbl">₹</span><span class="ruler-hint">lock the
-                price here</span></div>
-            <div class="ruler-box ruler-box-price">
-              <div class="tick-row" id="rpticks"></div>
-              <div class="track-outer" id="price-track">
-                <div class="track-bg price-track-bg"></div>
-                <div class="track-fill price-track-fill" id="price-fill"></div>
-                <div class="thumb price-thumb-el" id="price-thumb"></div>
-                <div class="target-marker" id="price-marker"></div>
+            <!-- Price Ruler (Bottom) - Fixed Track, Dynamic Ticks -->
+            <div class="ruler-row mrp-row" id="ruler-row-price">
+              <div class="ruler-icon-cell">₹</div>
+              <div class="ruler-track-cell" style="position:relative;">
+                <div class="dynamic-ticks-container" id="mrp-ticks"></div>
+                <!-- Answer pointer: OUTSIDE mrp-ticks so it survives innerHTML clears -->
+                <div class="answer-pointer" id="answer-pointer" style="display:none;">
+                  <div class="answer-pointer-line"></div>
+                  <div class="answer-pointer-label" id="answer-pointer-label"></div>
+                </div>
+                <div class="track-outer full-width-track">
+                  <div class="target-marker" id="price-marker"></div>
+                </div>
               </div>
             </div>
           </div>
